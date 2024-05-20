@@ -2,11 +2,11 @@ package com.zsgs.interviewpanelapp.updateinterview;
 
 import com.zsgs.interviewpanelapp.datastorage.DataBase;
 
-public class UpdateInterviewModel {
+public class UpdateInterviewViewModel {
 	private DataBase dataBase = DataBase.getInstance();
 	private UpdateInterviewView updateInterviewView;
 
-	public UpdateInterviewModel(UpdateInterviewView updateInterviewView) {
+	public UpdateInterviewViewModel(UpdateInterviewView updateInterviewView) {
 		this.updateInterviewView = updateInterviewView;
 	}
 
@@ -76,6 +76,6 @@ public class UpdateInterviewModel {
 	}
 
 	public void toExportData() {
-		dataBase.exportData();	
+		dataBase.exportData();
 	}
 }

@@ -10,7 +10,6 @@ import com.zsgs.interviewpanelapp.datalayer.DataLayer;
 import com.zsgs.interviewpanelapp.modules.Candidates;
 import com.zsgs.interviewpanelapp.modules.InterviewDetails;
 
-
 public class DataBase {
 	private static DataBase dataBase;
 	private static int uniqueId = 101;
@@ -79,6 +78,7 @@ public class DataBase {
 	public String getInterviewRole() {
 		return interviewDetails.getRole();
 	}
+
 	public boolean isEmptyCandidatesDetails() {
 		return candidateDetails.isEmpty();
 	}
@@ -93,8 +93,8 @@ public class DataBase {
 		candidate.setLocation(location);
 		candidateDetails.put(uniqueId, candidate);
 		candidateList.put(uniqueId, name);
-		interviewDetails.setTotalCandidates(interviewDetails.getTotalCandidates()+1);
-		interviewDetails.setRemaining(interviewDetails.getRemaining()+1);
+		interviewDetails.setTotalCandidates(interviewDetails.getTotalCandidates() + 1);
+		interviewDetails.setRemaining(interviewDetails.getRemaining() + 1);
 		uniqueId++;
 		exportData();
 	}
@@ -127,7 +127,7 @@ public class DataBase {
 	public void removeCandidate(int id) {
 		candidateList.remove(id);
 		interviewDetails.setTotalCandidates(interviewDetails.getTotalCandidates() - 1);
-		interviewDetails.setRemaining(interviewDetails.getRemaining()-1);
+		interviewDetails.setRemaining(interviewDetails.getRemaining() - 1);
 		exportData();
 	}
 
@@ -230,38 +230,44 @@ public class DataBase {
 			candidateDetails.get(entry.getKey()).showCandidateList();
 		}
 	}
-	
+
 	public void serializeInterviewDetailsList() {
-        dataLayer.serializeData(interviewDetailsList, "InterviewDetailsList.txt");
-    }
-	public void deserializeInterviewDetailsList() {
-		Type interviewDetailsListType = new TypeToken<HashMap<Integer, InterviewDetails>>(){
-		}.getType();
-		interviewDetailsList = dataLayer.deserializeData("InterviewDetailsListList.txt", interviewDetailsListType, HashMap.class);
+		dataLayer.serializeData(interviewDetailsList, "InterviewDetailsList.txt");
 	}
+
+	public void deserializeInterviewDetailsList() {
+		Type interviewDetailsListType = new TypeToken<HashMap<Integer, InterviewDetails>>() {
+		}.getType();
+		interviewDetailsList = dataLayer.deserializeData("InterviewDetailsListList.txt", interviewDetailsListType,
+				HashMap.class);
+	}
+
 	public void serializeCandidateList() {
-        dataLayer.serializeData(candidateList, "CandidateList.txt");
-    }
+		dataLayer.serializeData(candidateList, "CandidateList.txt");
+	}
+
 	public void deserializeCandidateList() {
-		Type candidateListType = new TypeToken<HashMap<Integer, Candidates>>(){
+		Type candidateListType = new TypeToken<HashMap<Integer, Candidates>>() {
 		}.getType();
 		candidateDetails = dataLayer.deserializeData("CandidateList.txt", candidateListType, HashMap.class);
 	}
+
 	public void serializeCandidateDetails() {
-        dataLayer.serializeData(candidateList, "CandidateDetails.txt");
-    }
+		dataLayer.serializeData(candidateList, "CandidateDetails.txt");
+	}
+
 	public void deserializeCandidateDetails() {
-		Type candidateDetailsType = new TypeToken<HashMap<Integer, Candidates>>(){
+		Type candidateDetailsType = new TypeToken<HashMap<Integer, Candidates>>() {
 		}.getType();
 		candidateDetails = dataLayer.deserializeData("CandidateDetails.txt", candidateDetailsType, HashMap.class);
 	}
-	
+
 	public void exportData() {
 		serializeInterviewDetailsList();
 		serializeCandidateList();
 		serializeCandidateDetails();
 	}
-	
+
 	public void importData() {
 		deserializeInterviewDetailsList();
 		deserializeCandidateList();

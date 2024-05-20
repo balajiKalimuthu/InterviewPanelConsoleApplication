@@ -11,16 +11,16 @@ import com.zsgs.interviewpanelapp.updateinterview.UpdateInterviewView;
 
 public class InterviewProcessView {
 	private InterviewPanelApp interviewPanelApp = InterviewPanelApp.getInstance();
-	private InterviewProcessModel interviewProcessModel;
+	private InterviewProcessViewModel interviewProcessViewModel;
 	private Scanner sc = new Scanner(System.in);
 
 	public InterviewProcessView() {
-		interviewProcessModel = new InterviewProcessModel(this);
+		interviewProcessViewModel = new InterviewProcessViewModel(this);
 	}
 
 	// Interview Details Method
 	public void init() {
-		interviewProcessModel.startSetup();
+		interviewProcessViewModel.startSetup();
 	}
 
 	public void initiateInterviewSetup() {
@@ -31,36 +31,36 @@ public class InterviewProcessView {
 		do {
 			System.out.print("\n  Id      : ");
 			id = sc.nextLine();
-			valid = interviewProcessModel.vaildId(id);
+			valid = interviewProcessViewModel.vaildId(id);
 			if (!valid) {
-				interviewProcessModel.invalidId();
+				interviewProcessViewModel.invalidId();
 			}
 		} while (!valid);
 		do {
 			System.out.print("  HR Name : ");
 			name = sc.nextLine();
-			valid = interviewProcessModel.validName(name);
+			valid = interviewProcessViewModel.validName(name);
 			if (!valid) {
-				interviewProcessModel.invalidName();
+				interviewProcessViewModel.invalidName();
 			}
 		} while (!valid);
 		do {
 			System.out.print("  Role    : ");
 			role = sc.nextLine();
-			valid = interviewProcessModel.validName(name);
+			valid = interviewProcessViewModel.validName(name);
 			if (!valid) {
-				interviewProcessModel.invalidName();
+				interviewProcessViewModel.invalidName();
 			}
 		} while (!valid);
 		do {
 			System.out.print("  Date    : ");
 			date = sc.nextLine();
-			valid = interviewProcessModel.validDate(date);
+			valid = interviewProcessViewModel.validDate(date);
 			if (!valid) {
-				interviewProcessModel.invalidDate();
+				interviewProcessViewModel.invalidDate();
 			}
 		} while (!valid);
-		interviewProcessModel.setInterviewDetails(id, name, role, date);
+		interviewProcessViewModel.setInterviewDetails(id, name, role, date);
 	}
 
 	public void onSetupComplete(InterviewDetails interviewDetails) {
@@ -80,10 +80,10 @@ public class InterviewProcessView {
 				sc.nextLine();
 				switch (choice) {
 				case 1:
-					interviewProcessModel.toShowStatus();
+					interviewProcessViewModel.toShowStatus();
 					break;
 				case 2:
-					interviewProcessModel.toCandidateList();
+					interviewProcessViewModel.toCandidateList();
 					break;
 				case 3:
 					new UpdateInterviewView().init();
@@ -92,16 +92,16 @@ public class InterviewProcessView {
 					new ManageCandidateView().init();
 					break;
 				case 5:
-					interviewProcessModel.toShowResult();
+					interviewProcessViewModel.toShowResult();
 					break;
 				case 9:
 					System.out.println("\n--- Logout successful ---");
 					System.out.println("\nPlease login to proceed...");
-					interviewProcessModel.toExportData();
+					interviewProcessViewModel.toExportData();
 					new LoginView().proceedLogin();
 					return;
 				case 0:
-					interviewProcessModel.toExportData();
+					interviewProcessViewModel.toExportData();
 					exit();
 					return;
 				default:

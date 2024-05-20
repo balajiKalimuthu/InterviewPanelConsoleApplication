@@ -9,6 +9,7 @@ public class DataLayer {
 	private Serialization serialization;
 	private Deserialization deserialization;
 	private final String DATA_FOLDER_PATH = System.getProperty("user.dir") + File.separator + "InterviewDataBase";
+
 	public DataLayer() {
 		serialization = new Serialization();
 		deserialization = new Deserialization();
@@ -18,9 +19,9 @@ public class DataLayer {
 		serialization.serializeData(object, DATA_FOLDER_PATH, fileName);
 	}
 
-	public <T> T deserializeData(String fileName, Type type,Class<T> objects) {
-		T deserializedData = deserialization.deserializeData(DATA_FOLDER_PATH,fileName,type);
-		if(deserializedData == null) {
+	public <T> T deserializeData(String fileName, Type type, Class<T> objects) {
+		T deserializedData = deserialization.deserializeData(DATA_FOLDER_PATH, fileName, type);
+		if (deserializedData == null) {
 			deserializedData = createInstance(objects);
 		}
 		return deserializedData;

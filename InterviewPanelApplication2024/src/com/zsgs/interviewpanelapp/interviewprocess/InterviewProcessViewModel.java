@@ -3,11 +3,11 @@ package com.zsgs.interviewpanelapp.interviewprocess;
 import com.zsgs.interviewpanelapp.datastorage.DataBase;
 import com.zsgs.interviewpanelapp.validator.ValueValidator;
 
-public class InterviewProcessModel {
+public class InterviewProcessViewModel {
 	private DataBase dataBase = DataBase.getInstance();
 	private InterviewProcessView interviewProcessView;
 
-	public InterviewProcessModel(InterviewProcessView interviewProcessView) {
+	public InterviewProcessViewModel(InterviewProcessView interviewProcessView) {
 		this.interviewProcessView = interviewProcessView;
 	}
 

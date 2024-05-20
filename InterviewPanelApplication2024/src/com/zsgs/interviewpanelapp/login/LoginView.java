@@ -7,11 +7,11 @@ import com.zsgs.interviewpanelapp.interviewprocess.InterviewProcessView;
 
 public class LoginView {
 	private InterviewPanelApp interviewPanelApp = InterviewPanelApp.getInstance();
-	private LoginModel loginModel;
+	private LoginViewModel loginViewModel;
 	private Scanner sc = new Scanner(System.in);
 
 	public LoginView() {
-		loginModel = new LoginModel(this);
+		loginViewModel = new LoginViewModel(this);
 	}
 
 	public void init() {
@@ -27,7 +27,7 @@ public class LoginView {
 		System.out.println("Type: Yes/No");
 		System.out.print("\n  Type : ");
 		String type = sc.nextLine();
-		loginModel.isType(type);
+		loginViewModel.isType(type);
 	}
 
 	public void end() {
@@ -47,7 +47,7 @@ public class LoginView {
 		adminName = sc.nextLine();
 		System.out.print("  Password : ");
 		adminPassword = sc.nextLine();
-		loginModel.checkLoginDetails(adminName, adminPassword);
+		loginViewModel.checkLoginDetails(adminName, adminPassword);
 	}
 
 	public void showMessage(String showMessage) {

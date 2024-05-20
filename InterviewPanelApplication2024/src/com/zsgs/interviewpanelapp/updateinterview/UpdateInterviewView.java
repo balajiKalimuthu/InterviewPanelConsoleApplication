@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class UpdateInterviewView {
 	private Scanner sc = new Scanner(System.in);
-	private UpdateInterviewModel updateInterviewModel;
+	private UpdateInterviewViewModel updateInterviewViewModel;
 
 	public UpdateInterviewView() {
-		updateInterviewModel = new UpdateInterviewModel(this);
+		updateInterviewViewModel = new UpdateInterviewViewModel(this);
 	}
 
 	public void init() {
@@ -26,16 +26,16 @@ public class UpdateInterviewView {
 				int choice = sc.nextInt();
 				switch (choice) {
 				case 1:
-					updateInterviewModel.toStart();
+					updateInterviewViewModel.toStart();
 					break;
 				case 2:
-					updateInterviewModel.checkInterviewStatus();
+					updateInterviewViewModel.checkInterviewStatus();
 					break;
 				case 3:
-					updateInterviewModel.toEnd();
+					updateInterviewViewModel.toEnd();
 					break;
 				case 0:
-					updateInterviewModel.toExportData();
+					updateInterviewViewModel.toExportData();
 					return;
 				default:
 					showMessage("\nPlease enter valid choice...");
@@ -49,9 +49,9 @@ public class UpdateInterviewView {
 	}
 
 	public void toUpdate() {
-		updateInterviewModel.isAvailableCurrentCandidate();
+		updateInterviewViewModel.isAvailableCurrentCandidate();
 		showMessage("\nResult updated...");
-		updateInterviewModel.checkNextCandidate();
+		updateInterviewViewModel.checkNextCandidate();
 	}
 
 	public void showMessage(String showMessage) {
@@ -70,13 +70,13 @@ public class UpdateInterviewView {
 				int choice = sc.nextInt();
 				switch (choice) {
 				case 1:
-					updateInterviewModel.passed(lastCandidate);
+					updateInterviewViewModel.passed(lastCandidate);
 					return;
 				case 2:
-					updateInterviewModel.rejected(lastCandidate);
+					updateInterviewViewModel.rejected(lastCandidate);
 					return;
 				case 3:
-					updateInterviewModel.onHold(lastCandidate);
+					updateInterviewViewModel.onHold(lastCandidate);
 					return;
 				default:
 					System.out.println("\nPlease enter valid choice...");

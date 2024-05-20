@@ -2,11 +2,11 @@ package com.zsgs.interviewpanelapp.login;
 
 import com.zsgs.interviewpanelapp.datastorage.DataBase;
 
-public class LoginModel {
+public class LoginViewModel {
 	private DataBase dataBase = DataBase.getInstance();
 	private LoginView loginView;
 
-	public LoginModel(LoginView loginView) {
+	public LoginViewModel(LoginView loginView) {
 		this.loginView = loginView;
 	}
 

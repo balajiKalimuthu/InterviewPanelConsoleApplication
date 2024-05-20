@@ -3,11 +3,11 @@ package com.zsgs.interviewpanelapp.managecandidates;
 import com.zsgs.interviewpanelapp.datastorage.DataBase;
 import com.zsgs.interviewpanelapp.validator.ValueValidator;
 
-public class ManageCandidateModel {
+public class ManageCandidateViewModel {
 	private DataBase dataBase = DataBase.getInstance();
 	private ManageCandidateView manageCandidateView;
 
-	public ManageCandidateModel(ManageCandidateView manageCandidateView) {
+	public ManageCandidateViewModel(ManageCandidateView manageCandidateView) {
 		this.manageCandidateView = manageCandidateView;
 	}
 

@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class ManageCandidateView {
 	private boolean valid;
-	private ManageCandidateModel manageCandidateModel;
+	private ManageCandidateViewModel manageCandidateViewModel;
 	private Scanner sc = new Scanner(System.in);
 
 	public ManageCandidateView() {
-		manageCandidateModel = new ManageCandidateModel(this);
+		manageCandidateViewModel = new ManageCandidateViewModel(this);
 	}
 
 	public void init() {
@@ -29,19 +29,19 @@ public class ManageCandidateView {
 				sc.nextLine();
 				switch (choice) {
 				case 1:
-					manageCandidateModel.isInterviewCompleted();
+					manageCandidateViewModel.isInterviewCompleted();
 					break;
 				case 2:
 					isRemove();
 					break;
 				case 3:
-					manageCandidateModel.listAppliedCandidate();
+					manageCandidateViewModel.listAppliedCandidate();
 					break;
 				case 4:
-					manageCandidateModel.isEmptyCandidatesDetails();
+					manageCandidateViewModel.isEmptyCandidatesDetails();
 					break;
 				case 0:
-					manageCandidateModel.toExportData();
+					manageCandidateViewModel.toExportData();
 					return;
 				default:
 					System.out.println("\nPlease enter valid choice...");
@@ -59,7 +59,7 @@ public class ManageCandidateView {
 			System.out.print("\n  Enter Candidate Id: ");
 			int id = sc.nextInt();
 			sc.nextLine();
-			manageCandidateModel.isCandidateToRemove(id);
+			manageCandidateViewModel.isCandidateToRemove(id);
 		} catch (InputMismatchException e) {
 			System.out.println("\nPlease enter valid input...");
 			sc.nextLine();
@@ -72,20 +72,20 @@ public class ManageCandidateView {
 			System.out.print("\n  Enter Candidate Id: ");
 			int id = sc.nextInt();
 			sc.nextLine();
-			manageCandidateModel.candidateResult(id);
+			manageCandidateViewModel.candidateResult(id);
 		} catch (InputMismatchException id) {
 			System.out.println("\nPlease enter valid input...");
 			sc.nextLine();
 			isRemove();
 		}
 	}
-	
+
 	public void isRole() {
-		System.out.println("\nDid you came for " + manageCandidateModel.interviewRole() + " role?");
+		System.out.println("\nDid you came for " + manageCandidateViewModel.interviewRole() + " role?");
 		System.out.println("Type: Yes/No");
 		System.out.print("\n  Type : ");
 		String type = sc.nextLine();
-		manageCandidateModel.isRoleYes(type);
+		manageCandidateViewModel.isRoleYes(type);
 	}
 
 	public void showMessage(String showMessage) {
@@ -99,9 +99,9 @@ public class ManageCandidateView {
 		do {
 			System.out.print("\n  Phone No : ");
 			phoneNo = sc.nextLine();
-			valid = manageCandidateModel.validPhoneNo(phoneNo);
+			valid = manageCandidateViewModel.validPhoneNo(phoneNo);
 		} while (!valid);
-		manageCandidateModel.isAvailablePhoneNo(phoneNo);
+		manageCandidateViewModel.isAvailablePhoneNo(phoneNo);
 	}
 
 	public void createDetails(String phoneNo) {
@@ -109,23 +109,23 @@ public class ManageCandidateView {
 		do {
 			System.out.print("\n  Name          : ");
 			name = sc.nextLine();
-			valid = manageCandidateModel.validName(name);
+			valid = manageCandidateViewModel.validName(name);
 		} while (!valid);
 		do {
 			System.out.print("  Email Id      : ");
 			emailId = sc.nextLine();
-			valid = manageCandidateModel.validEmailId(emailId);
+			valid = manageCandidateViewModel.validEmailId(emailId);
 		} while (!valid);
 		do {
 			System.out.print("  Date of Birth : ");
 			dob = sc.nextLine();
-			valid = manageCandidateModel.validDate(dob);
+			valid = manageCandidateViewModel.validDate(dob);
 		} while (!valid);
 		do {
 			System.out.print("  Location      : ");
 			location = sc.nextLine();
-			valid = manageCandidateModel.validLocation(location);
+			valid = manageCandidateViewModel.validLocation(location);
 		} while (!valid);
-		manageCandidateModel.addCandidate(name, phoneNo, emailId, dob, location);
+		manageCandidateViewModel.addCandidate(name, phoneNo, emailId, dob, location);
 	}
 }
